@@ -1,0 +1,50 @@
+{
+  "name": "next-apollo",
+  "version": "0.0.0",
+  "description":
+    "React higher-order component for integrating the Apollo GraphQL client inside Next.js",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "prepublish": "npm run build",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,json}": [
+      "prettier --write --no-semi --single-quote --jsx-bracket-same-line",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ads1018/next-apollo.git"
+  },
+  "keywords": ["nextjs", "graphql", "apollo", "reactjs"],
+  "author": "Adam Soffer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ads1018/next-apollo/issues"
+  },
+  "homepage": "https://github.com/ads1018/next-apollo#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-spread": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.3.0",
+    "prettier": "^1.7.4"
+  },
+  "dependencies": {
+    "graphql": "^0.11.7",
+    "isomorphic-fetch": "^2.2.1",
+    "next": "^4.1.1",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-apollo": "^1.4.16",
+    "react-dom": "^16.0.0"
+  }
+}
