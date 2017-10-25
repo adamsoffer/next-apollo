@@ -59,7 +59,7 @@ export default {
 
 Next-apollo integrates Apollo seamlessly with Next by wrapping our pages inside a higher-order component (HOC). Using a HOC pattern we're able to pass down a central store of query result data created by Apollo into our React component hierarchy defined inside each page of our Next application.
 
-On initial page load, while on the server and inside getInitialProps, the Apollo method getDataFromTree, gets invoked and returns a promise; at the point in which the promise resolves, our Apollo Client store is completely initialized.
+On initial page load, while on the server and inside `getInitialProps`, the Apollo method, `getDataFromTree`, is invoked and returns a promise; at the point in which the promise resolves, our Apollo Client store is completely initialized.
 
 ## License
 
