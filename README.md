@@ -1,6 +1,6 @@
 Next Apollo [![Build Status](https://travis-ci.org/ads1018/next-apollo.svg?branch=master)](https://travis-ci.org/ads1018/next-apollo)
 =========================
-A react higher-order component for integrating the Apollo Client inside [Next](https://github.com/reactjs/redux).
+A library for integrating the Apollo Client inside [Next](https://github.com/reactjs/redux).
 
 ## Installation
 ```
