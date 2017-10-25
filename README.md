@@ -1,6 +1,6 @@
 Next Apollo [![Build Status](https://travis-ci.org/ads1018/next-apollo.svg?branch=master)](https://travis-ci.org/ads1018/next-apollo)
 =========================
-A react higher-order component for integrating the Apollo GraphQL client inside [Next](https://github.com/reactjs/redux).
+A react higher-order component for integrating the Apollo Client inside [Next](https://github.com/reactjs/redux).
 
 ## Installation
 ```
@@ -8,7 +8,7 @@ npm install --save next-apollo
 ```
 
 ## Documentation
-Create an Apollo client configuration file. Check out the [Apollo Client API](http://dev.apollodata.com/core/apollo-client-api.html#ApolloClient.constructor) for more options.
+Create an Apollo configuration file. Check out the [Apollo Client API](http://dev.apollodata.com/core/apollo-client-api.html#ApolloClient.constructor) for more options.
 
 ```jsx
 import { createNetworkInterface } from 'next-apollo'
@@ -37,7 +37,7 @@ export default withData(config, props => (
 ```
 
 ### Redux integration
-By default, Apollo Client creates its own internal Redux store to manage queries and their results. If you are already using Redux for the rest of your app, you can have the client integrate with your existing store instead, by simply passing your reducers to your Apollo configuration object.
+By default, Apollo Client creates its own internal Redux store to manage queries and their results. If you are already using Redux for the rest of your app, you can have the client integrate with your existing store instead by simply passing your reducers to your Apollo configuration object.
 
 ```jsx
 import { createNetworkInterface } from 'next-apollo'
