@@ -1,3 +1,4 @@
+import { createNetworkInterface } from 'react-apollo'
 import withData from './withData'
 
-export { withData }
+export { withData, createNetworkInterface }
