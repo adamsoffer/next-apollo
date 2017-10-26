@@ -33,6 +33,7 @@ export default withData(config, props => (
 ))
 
 ```
+That's it!
 
 ### Redux integration
 By default, Apollo Client creates its own internal Redux store to manage queries and their results. If you are already using Redux for the rest of your app, you can have the client integrate with your existing store instead by simply passing your reducers to your Apollo configuration object.
