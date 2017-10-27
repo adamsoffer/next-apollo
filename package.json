@@ -26,6 +26,7 @@
     "url": "https://github.com/ads1018/next-apollo/issues"
   },
   "homepage": "https://github.com/ads1018/next-apollo#readme",
+  "files": ["dist"],
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
