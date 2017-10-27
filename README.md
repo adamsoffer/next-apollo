@@ -9,7 +9,7 @@ npm install --save next-apollo
 Create an Apollo configuration file. Check out the [Apollo Client API](http://dev.apollodata.com/core/apollo-client-api.html#ApolloClient.constructor) for more options.
 
 ```jsx
-import { createNetworkInterface } from 'next-apollo'
+import { createNetworkInterface } from 'react-apollo'
 
 export default {
   options: {
