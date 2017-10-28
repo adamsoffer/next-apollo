@@ -39,7 +39,7 @@ That's it!
 By default, Apollo Client creates its own internal Redux store to manage queries and their results. If you are already using Redux for the rest of your app, you can have the client integrate with your existing store instead by simply passing your reducers to your Apollo configuration object.
 
 ```jsx
-import { createNetworkInterface } from 'next-apollo'
+import { createNetworkInterface } from 'react-apollo'
 import reducers from './reducers'
 
 export default {
