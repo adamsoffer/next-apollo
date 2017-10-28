@@ -27,7 +27,7 @@ import { withData } from 'next-apollo'
 import config from '../lib/apolloConfig'
 
 export default withData(config, props => (
-  <MyPage>Hello World</MyPage>
+  <div>Hello World</div>
 ))
 
 ```
