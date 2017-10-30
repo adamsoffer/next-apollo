@@ -6,12 +6,13 @@ npm install --save next-apollo
 ```
 
 ## Documentation
-Create an Apollo configuration file. Check out the [Apollo Client API](https://www.apollographql.com/docs/react/basics/setup.html#ApolloClient) for more options.
+Create an Apollo configuration object (check out the [Apollo Client API](https://www.apollographql.com/docs/react/basics/setup.html#ApolloClient) for more configuration options). Pass the configuration object to the `withData` higher-order component and export the returned component.
 
 ```jsx
+import { withData } from 'next-apollo'
 import { HttpLink } from 'apollo-link-http'
 
-export default {
+const config = {
   link: new HttpLink({
     uri: 'https://api.graph.cool/simple/v1/cixmkt2ul01q00122mksg82pn', // Server URL (must be absolute)
     opts: {
@@ -19,12 +20,13 @@ export default {
     }
   })
 }
+
+export default withData(config)
 ```
-Inside your Next.js page, wrap your component with the `withData` higher order component and pass it your configuration object.
+Inside your Next.js page, wrap your component with your exported higher order component.
 
 ```jsx
-import { withData } from 'next-apollo'
-import config from '../lib/apolloConfig'
+import withData from '../lib/apollo'
 
 export default withData(config, props => (
   <div>Hello World</div>
