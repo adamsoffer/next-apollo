@@ -28,7 +28,7 @@ Inside your Next.js page, wrap your component with your exported higher order co
 ```jsx
 import withData from '../lib/apollo'
 
-export default withData(config, props => (
+export default withData(props => (
   <div>Hello World</div>
 ))
 
