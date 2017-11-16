@@ -9,7 +9,7 @@ function getComponentDisplayName(Component) {
   return Component.displayName || Component.name || 'Unknown'
 }
 
-export default apollogConfig => {
+export default apolloConfig => {
   return ComposedComponent => {
     return class WithData extends React.Component {
       static displayName = `WithData(${getComponentDisplayName(
