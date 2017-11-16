@@ -31,7 +31,7 @@ export default apolloConfig => {
         // Run all GraphQL queries in the component tree
         // and extract the resulting data
         if (!process.browser) {
-          const apollo = initApollo(apollogConfig)
+          const apollo = initApollo(apolloConfig)
           // Provide the `url` prop data in case a GraphQL query uses it
           const url = { query: ctx.query, pathname: ctx.pathname }
           try {
@@ -67,7 +67,7 @@ export default apolloConfig => {
       constructor(props) {
         super(props)
         this.apollo = initApollo(
-          apollogConfig,
+          apolloConfig,
           this.props.serverState.apollo.data
         )
       }
