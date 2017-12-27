@@ -32,13 +32,11 @@ export default apolloConfig => {
         // and extract the resulting data
         if (!process.browser) {
           const apollo = initApollo(apolloConfig)
-          // Provide the `url` prop data in case a GraphQL query uses it
-          const url = { query: ctx.query, pathname: ctx.pathname }
           try {
             // Run all GraphQL queries
             await getDataFromTree(
               <ApolloProvider client={apollo}>
-                <ComposedComponent url={url} {...composedInitialProps} />
+                <ComposedComponent ctx={ctx} {...composedInitialProps} />
               </ApolloProvider>
             )
           } catch (error) {
