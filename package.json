@@ -42,6 +42,7 @@
     "apollo-client-preset": "^1.0.1",
     "graphql": "^0.11.7",
     "isomorphic-fetch": "^2.2.1",
+    "lodash.isfunction": "^3.0.8",
     "next": "^4.1.1",
     "react": "^16.0.0",
     "react-apollo": "^2.0.0",
