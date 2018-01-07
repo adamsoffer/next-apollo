@@ -1,6 +1,7 @@
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import fetch from 'isomorphic-fetch'
+import isFunction from 'lodash.isfunction'
 
 let apolloClient = null
 
@@ -18,7 +19,10 @@ function create(apolloConfig, initialState) {
   })
 }
 
-export default function initApollo(apolloConfig, initialState) {
+export default function initApollo(apolloConfig, initialState, headers) {
+  if (isFunction(apolloConfig)) {
+    apolloConfig = apolloConfig(headers)
+  }
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
   if (!process.browser) {
