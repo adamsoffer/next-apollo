@@ -31,7 +31,7 @@ export default apolloConfig => {
         // Run all GraphQL queries in the component tree
         // and extract the resulting data
         if (!process.browser) {
-          const apollo = initApollo(apolloConfig)
+          const apollo = initApollo(apolloConfig, null, ctx.req.headers)
           try {
             // Run all GraphQL queries
             await getDataFromTree(

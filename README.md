@@ -12,6 +12,7 @@ Create an Apollo configuration object (check out the [Apollo Client API](https:/
 import { withData } from 'next-apollo'
 import { HttpLink } from 'apollo-link-http'
 
+// can also be a function that accepts a `headers` object (SSR only) and returns a config
 const config = {
   link: new HttpLink({
     uri: 'https://api.graph.cool/simple/v1/cixmkt2ul01q00122mksg82pn', // Server URL (must be absolute)
