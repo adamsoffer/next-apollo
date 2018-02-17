@@ -42,6 +42,10 @@ Next-apollo integrates Apollo seamlessly with Next by wrapping our pages inside 
 
 On initial page load, while on the server and inside `getInitialProps`, the Apollo method, `getDataFromTree`, is invoked and returns a promise; at the point in which the promise resolves, our Apollo Client store is completely initialized.
 
+## Authentication
+
+To learn how to implement authentication when using `next-apollo` checkout [this example](https://github.com/thealjey/next-apollo-auth-example) by [@thealjey](https://github.com/thealjey).
+
 ## License
 
 MIT
