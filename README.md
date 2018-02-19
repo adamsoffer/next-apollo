@@ -44,7 +44,7 @@ On initial page load, while on the server and inside `getInitialProps`, the Apol
 
 ## Authentication
 
-To learn how to implement authentication when using `next-apollo` checkout [this example](https://github.com/thealjey/next-apollo-auth-example) by [@thealjey](https://github.com/thealjey).
+If you're interested in implementing authentication checkout [this example](https://github.com/thealjey/next-apollo-auth-example) by [@thealjey](https://github.com/thealjey).
 
 ## License
 
