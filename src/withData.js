@@ -31,12 +31,20 @@ export default apolloConfig => {
         // Run all GraphQL queries in the component tree
         // and extract the resulting data
         if (!process.browser) {
-          const apollo = initApollo(apolloConfig)
+          const apollo = initApollo(apolloConfig, null, ctx.req.headers)
+
+          // Provide the `url` prop data in case a GraphQL query uses it
+          const url = { query: ctx.query, pathname: ctx.pathname }
+
           try {
             // Run all GraphQL queries
             await getDataFromTree(
               <ApolloProvider client={apollo}>
-                <ComposedComponent ctx={ctx} {...composedInitialProps} />
+                <ComposedComponent
+                  url={url}
+                  ctx={ctx}
+                  {...composedInitialProps}
+                />
               </ApolloProvider>,
               {
                 router: {
