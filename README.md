@@ -42,6 +42,10 @@ Next-apollo integrates Apollo seamlessly with Next by wrapping our pages inside 
 
 On initial page load, while on the server and inside `getInitialProps`, the Apollo method, `getDataFromTree`, is invoked and returns a promise; at the point in which the promise resolves, our Apollo Client store is completely initialized.
 
+## Beware Of Cache
+
+SSR will cease to function if you pass in your own Cache.  It is highly suggested that you do not pass in your own Cache in the config unless you want it to drop the SSR functionality.
+
 ## Authentication
 
 If you're interested in implementing authentication checkout [this example](https://github.com/thealjey/next-apollo-auth-example) by [@thealjey](https://github.com/thealjey).
