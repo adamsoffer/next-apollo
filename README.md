@@ -42,9 +42,41 @@ Next-apollo integrates Apollo seamlessly with Next by wrapping our pages inside 
 
 On initial page load, while on the server and inside `getInitialProps`, the Apollo method, `getDataFromTree`, is invoked and returns a promise; at the point in which the promise resolves, our Apollo Client store is completely initialized.
 
-## Beware Of Cache
+## Custom Cache
 
-SSR will cease to function if you pass in your own Cache.  It is highly suggested that you do not pass in your own Cache in the config unless you want it to drop the SSR functionality.
+SSR will cease to function if you pass in your own Cache.
+It is highly suggested that you do not pass in your own Cache in
+the config unless you want it to drop the SSR functionality.
+
+Instead, to use a custom cache, pass in a `createCache` function.
+For example, to use a cache with [fragment matching],
+
+```jsx
+import { withData } from 'next-apollo'
+import { HttpLink } from 'apollo-link-http'
+import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory'
+
+import introspectionQueryResultData from './fragmentTypes'
+
+const createCache = () => {
+  const fragmentMatcher = new IntrospectionFragmentMatcher({
+    introspectionQueryResultData
+  })
+
+  return new InMemoryCache({fragmentMatcher})
+}
+
+const config = {
+  link: new HttpLink({
+    uri: 'https://api.graph.cool/simple/v1/cixmkt2ul01q00122mksg82pn'
+  }),
+  createCache
+}
+
+export default withData(config)
+```
+
+[fragment matching]: https://www.apollographql.com/docs/react/recipes/fragment-matching.html
 
 ## Authentication
 
