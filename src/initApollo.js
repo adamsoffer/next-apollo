@@ -10,13 +10,21 @@ if (!process.browser) {
   global.fetch = fetch
 }
 
+const createDefaultCache = () => new InMemoryCache()
+
 function create(apolloConfig, initialState) {
-  return new ApolloClient({
+  const createCache = apolloConfig.createCache || createDefaultCache
+
+  const config = {
     connectToDevTools: process.browser,
     ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
-    cache: new InMemoryCache().restore(initialState || {}),
+    cache: createCache().restore(initialState || {}),
     ...apolloConfig
-  })
+  }
+
+  delete config.createCache
+
+  return new ApolloClient(config)
 }
 
 export default function initApollo(apolloConfig, initialState, headers) {
