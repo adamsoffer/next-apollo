@@ -78,10 +78,6 @@ export default withData(config)
 
 [fragment matching]: https://www.apollographql.com/docs/react/recipes/fragment-matching.html
 
-## Authentication
-
-If you're interested in implementing authentication checkout [this example](https://github.com/thealjey/next-apollo-auth-example) by [@thealjey](https://github.com/thealjey).
-
 ## License
 
 MIT
