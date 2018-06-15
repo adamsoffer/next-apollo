@@ -27,9 +27,9 @@ function create(apolloConfig, initialState) {
   return new ApolloClient(config)
 }
 
-export default function initApollo(apolloConfig, initialState, headers) {
+export default function initApollo(apolloConfig, initialState, ctx) {
   if (isFunction(apolloConfig)) {
-    apolloConfig = apolloConfig(headers)
+    apolloConfig = apolloConfig(ctx)
   }
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
