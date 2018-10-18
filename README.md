@@ -16,7 +16,7 @@ import { HttpLink } from 'apollo-link-http'
 const config = {
   link: new HttpLink({
     credentials: 'same-origin' // Additional fetch() options like `credentials` or `headers`
-    uri: 'https://api.graph.cool/simple/v1/cixmkt2ul01q00122mksg82pn', // Server URL (must be absolute)
+    uri: 'https://api.graph.cool/simple/v1/cixmkt2ul01q00122mksg82pn', // Server URL
   })
 }
 
