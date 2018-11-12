@@ -1,11 +1,18 @@
-Next Apollo [![Build Status](https://travis-ci.org/adamsoffer/next-apollo.svg?branch=master)](https://travis-ci.org/adamsoffer/next-apollo)
-=========================
+# Next Apollo [![Build Status](https://travis-ci.org/adamsoffer/next-apollo.svg?branch=master)](https://travis-ci.org/adamsoffer/next-apollo)
+
+A package for using Apollo within a Next.js application.
+
+Note:
+This solution is ideal if you prefer to use Apollo explicitly on a _page-by-page_ basis, as it requires you to wrap every page where you use Apollo in a HOC. If you prefer to use Apollo implicitly on every page, I recommend taking a look at the [`with-apollo` example](https://github.com/zeit/next.js/tree/canary/examples/with-apollo) in the next.js repo.
+
 ## Installation
+
 ```
 npm install --save next-apollo
 ```
 
 ## Documentation
+
 Create an Apollo configuration object (check out the [Apollo Client API](https://www.apollographql.com/docs/react/basics/setup.html#ApolloClient) for more configuration options). Pass the configuration object to the `withData` higher-order component and export the returned component.
 
 ```jsx
@@ -22,16 +29,15 @@ const config = {
 
 export default withData(config)
 ```
+
 Inside your Next.js page, wrap your component with your exported higher order component.
 
 ```jsx
 import withData from '../lib/apollo'
 
-export default withData(props => (
-  <div>Hello World</div>
-))
-
+export default withData(props => <div>Hello World</div>)
 ```
+
 That's it!
 
 ## How Does It Work?
@@ -52,7 +58,10 @@ For example, to use a cache with [fragment matching],
 ```jsx
 import { withData } from 'next-apollo'
 import { HttpLink } from 'apollo-link-http'
-import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory'
+import {
+  InMemoryCache,
+  IntrospectionFragmentMatcher
+} from 'apollo-cache-inmemory'
 
 import introspectionQueryResultData from './fragmentTypes'
 
@@ -61,7 +70,7 @@ const createCache = () => {
     introspectionQueryResultData
   })
 
-  return new InMemoryCache({fragmentMatcher})
+  return new InMemoryCache({ fragmentMatcher })
 }
 
 const config = {
