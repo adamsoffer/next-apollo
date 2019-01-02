@@ -50,8 +50,8 @@
     "isomorphic-fetch": "^2.2.1",
     "lodash.isfunction": "^3.0.9",
     "next": "^7.0.2",
-    "react": "^16.7.0",
+    "react": "^16.7.0-alpha.2",
     "react-apollo": "^2.3.3",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0-alpha.2"
   }
 }
