@@ -36,7 +36,7 @@ export const prefetch = async href => {
 export default class LinkWithData extends Link {
   // re defined Link propTypes to add `withData`
   static propTypes = exact({
-    href: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+    href: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     as: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     prefetch: PropTypes.bool,
     replace: PropTypes.bool,
