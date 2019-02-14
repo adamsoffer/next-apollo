@@ -1,6 +1,6 @@
 {
   "name": "next-apollo",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "React higher-order component for using the Apollo GraphQL client inside Next.js",
   "main": "./dist/index.js",
   "scripts": {
@@ -55,7 +55,7 @@
     "lodash.isfunction": "3.0.9",
     "prop-types": "15.6.2",
     "prop-types-exact": "1.2.0",
-    "react": "^16.7.0-alpha.2",
+    "react": "^16.8.1",
     "react-apollo": "2.3.3",
     "url": "0.11.0"
   }
