@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Link from 'next/link'
 import Router from 'next/router'
 import { getDataFromTree } from 'react-apollo'
-import { execOnce, warn } from 'next/dist/lib/utils'
+import { execOnce } from 'next-server/dist/lib/utils'
 import exact from 'prop-types-exact'
 import { format, resolve, parse } from 'url'
 
@@ -49,7 +49,8 @@ export default class LinkWithData extends Link {
         const value = props[propName]
 
         if (typeof value === 'string') {
-          execOnce(warn)(
+          const warn = execOnce(console.error)
+          warn(
             `Warning: You're using a string directly inside <Link>. This usage has been deprecated. Please add an <a> tag as child of <Link>`
           )
         }
