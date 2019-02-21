@@ -1,6 +1,6 @@
 {
   "name": "next-apollo",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "React higher-order component for using the Apollo GraphQL client inside Next.js",
   "main": "./dist/index.js",
   "scripts": {
@@ -34,7 +34,7 @@
     "dist"
   ],
   "peerDependencies": {
-    "next": "latest"
+    "next": "^8.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -44,6 +44,7 @@
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.3.1",
     "husky": "0.14.3",
     "lint-staged": "4.3.0",
     "prettier": "1.15.3"
@@ -53,10 +54,12 @@
     "graphql": "0.11.7",
     "isomorphic-fetch": "2.2.1",
     "lodash.isfunction": "3.0.9",
-    "prop-types": "15.6.2",
+    "next": "^8.0.1",
+    "prop-types": "15.7.2",
     "prop-types-exact": "1.2.0",
-    "react": "^16.8.1",
-    "react-apollo": "2.3.3",
+    "react": "16.8.2",
+    "react-apollo": "2.4.1",
+    "react-dom": "16.8.2",
     "url": "0.11.0"
   }
 }
