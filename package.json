@@ -34,7 +34,13 @@
     "dist"
   ],
   "peerDependencies": {
-    "next": "^8.0.1"
+    "graphql": "0",
+    "next": "8",
+    "prop-types": "15",
+    "react-apollo": "2",
+    "react-dom": "16",
+    "react": "16",
+    "isomorphic-fetch": "2"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -51,15 +57,8 @@
   },
   "dependencies": {
     "apollo-client-preset": "1.0.8",
-    "graphql": "0.11.7",
-    "isomorphic-fetch": "2.2.1",
     "lodash.isfunction": "3.0.9",
-    "next": "^8.0.1",
-    "prop-types": "15.7.2",
     "prop-types-exact": "1.2.0",
-    "react": "16.8.2",
-    "react-apollo": "2.4.1",
-    "react-dom": "16.8.2",
     "url": "0.11.0"
   }
 }
