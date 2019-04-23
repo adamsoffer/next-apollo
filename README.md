@@ -7,8 +7,10 @@ This package is ideal if you want to tuck away all the ceremony involved when us
 
 ## Installation
 
+Note this project assumes you have react, react-dom, and next installed. They're specified as peerDependencies.
+
 ```
-npm install --save next-apollo
+npm install --save next-apollo graphql react-apollo
 ```
 
 ## Documentation
