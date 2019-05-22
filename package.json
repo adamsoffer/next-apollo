@@ -55,11 +55,11 @@
     "next": "^8.0.1",
     "prettier": "1.15.3",
     "react": "16.8.2",
-    "react-apollo": "2.4.1",
+    "react-apollo": "2.5.5",
     "react-dom": "16.8.2"
   },
   "dependencies": {
-    "apollo-client-preset": "1.0.8",
+    "apollo-boost": "^0.4.0",
     "isomorphic-fetch": "2.2.1",
     "lodash.isfunction": "3.0.9",
     "prop-types": "15.7.2",
