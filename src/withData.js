@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ApolloProvider, getDataFromTree } from 'react-apollo'
+import { ApolloProvider, getDataFromTree } from '@apollo/react-hooks'
 import Head from 'next/head'
 import initApollo from './initApollo'
 
