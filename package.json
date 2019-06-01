@@ -35,7 +35,7 @@
   ],
   "peerDependencies": {
     "@apollo/react-hooks": "0.1.0-beta.7",
-    "graphql": "14.3.0",
+    "graphql": "^14.3.1",
     "next": "^8.0.1",
     "react-dom": "16.8.6",
     "react": "16.8.6"
@@ -57,12 +57,9 @@
     "isomorphic-fetch": "2.2.1",
     "lint-staged": "4.3.0",
     "lodash.isfunction": "3.0.9",
-    "next": "^8.1.0",
     "prettier": "1.15.3",
-    "prop-types": "15.7.2",
     "prop-types-exact": "1.2.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "prop-types": "15.7.2",
     "url": "0.11.0"
   }
 }
