@@ -33,13 +33,6 @@ export default apolloConfig => {
         if (!process.browser) {
           const apollo = initApollo(apolloConfig, null, ctx)
 
-          // Provide the `url` prop data in case a GraphQL query uses it
-          const router = {
-            query: ctx.query,
-            pathname: ctx.pathname,
-            asPath: ctx.asPath
-          }
-
           try {
             // Run all GraphQL queries
             await getDataFromTree(
