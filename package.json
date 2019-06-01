@@ -36,7 +36,7 @@
   "peerDependencies": {
     "@apollo/react-hooks": "0.1.0-beta.7",
     "graphql": "^14.3.1",
-    "next": "^8.0.1",
+    "next": "^8.1.0",
     "react-dom": "16.8.6",
     "react": "16.8.6"
   },
@@ -51,13 +51,18 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.3.1",
     "apollo-cache-inmemory": "^1.6.0",
-    "apollo-client": "^2.6.0",
     "graphql": "^14.3.1",
     "husky": "0.14.3",
-    "isomorphic-fetch": "2.2.1",
     "lint-staged": "4.3.0",
-    "lodash.isfunction": "3.0.9",
+    "next": "^8.1.0",
     "prettier": "1.15.3",
+    "react-dom": "16.8.6",
+    "react": "16.8.6"
+  },
+  "dependencies": {
+    "apollo-client": "^2.6.0",
+    "isomorphic-fetch": "2.2.1",
+    "lodash.isfunction": "3.0.9",
     "prop-types-exact": "1.2.0",
     "prop-types": "15.7.2",
     "url": "0.11.0"
