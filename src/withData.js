@@ -20,6 +20,7 @@ export default apolloConfig => {
       }
 
       static async getInitialProps(ctx) {
+        let { router } = ctx
         let serverState = { apollo: {} }
 
         // Evaluate the composed component's getInitialProps()
@@ -31,16 +32,13 @@ export default apolloConfig => {
         // Run all GraphQL queries in the component tree
         // and extract the resulting data
         if (!process.browser) {
-          const apollo = initApollo(apolloConfig, null, ctx)
+          let apollo = initApollo(apolloConfig, null, ctx)
 
           try {
             // Run all GraphQL queries
             await getDataFromTree(
               <ApolloProvider client={apollo}>
-                <ComposedComponent
-                  router={ctx.router}
-                  {...composedInitialProps}
-                />
+                <ComposedComponent router={router} {...composedInitialProps} />
               </ApolloProvider>
             )
           } catch (error) {
