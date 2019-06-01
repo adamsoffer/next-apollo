@@ -44,15 +44,11 @@ export default apolloConfig => {
             // Run all GraphQL queries
             await getDataFromTree(
               <ApolloProvider client={apollo}>
-                <ComposedComponent router={router} {...composedInitialProps} />
-              </ApolloProvider>,
-              {
-                router: {
-                  asPath: ctx.asPath,
-                  pathname: ctx.pathname,
-                  query: ctx.query
-                }
-              }
+                <ComposedComponent
+                  router={ctx.router}
+                  {...composedInitialProps}
+                />
+              </ApolloProvider>
             )
           } catch (error) {
             // Prevent Apollo Client GraphQL errors from crashing SSR.
