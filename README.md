@@ -87,30 +87,6 @@ export default withData(config)
 
 [fragment matching]: https://www.apollographql.com/docs/react/recipes/fragment-matching.html
 
-## Data Prefetching
-This package uses a variation of ScaleAPI's [data prefetching technique](https://github.com/scaleapi/data-prefetch-link) tweaked slightly to work with apollo data. We extend the Next `<Link>` component to allow the invocation of `getDataFromTree` when prefetching a page. 
-
-Declarative prefetching example:
-
-```jsx
-import { Link } from 'next-apollo'
-
-<Link prefetch withData href="…">
-  <a>Some dynamic page</a>
-</Link>
-```
-
-Imperative prefetching example:
-```jsx
-import { Link, prefetch } from 'next-apollo'
-
-<Link href="…">
-  <a onMouseOver={() => prefetch('...')}>
-    Some dynamic page
-  </a>
-</Link>
-```
-
 ## License
 
 MIT
