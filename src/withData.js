@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ApolloProvider, getDataFromTree } from 'react-apollo'
+import { ApolloProvider, getDataFromTree } from '@apollo/react-hooks'
 import Head from 'next/head'
 import initApollo from './initApollo'
 
@@ -20,6 +20,7 @@ export default apolloConfig => {
       }
 
       static async getInitialProps(ctx) {
+        let { router } = ctx
         let serverState = { apollo: {} }
 
         // Evaluate the composed component's getInitialProps()
@@ -31,28 +32,14 @@ export default apolloConfig => {
         // Run all GraphQL queries in the component tree
         // and extract the resulting data
         if (!process.browser) {
-          const apollo = initApollo(apolloConfig, null, ctx)
-
-          // Provide the `url` prop data in case a GraphQL query uses it
-          const url = { query: ctx.query, pathname: ctx.pathname }
+          let apollo = initApollo(apolloConfig, null, ctx)
 
           try {
             // Run all GraphQL queries
             await getDataFromTree(
               <ApolloProvider client={apollo}>
-                <ComposedComponent
-                  url={url}
-                  ctx={ctx}
-                  {...composedInitialProps}
-                />
-              </ApolloProvider>,
-              {
-                router: {
-                  asPath: ctx.asPath,
-                  pathname: ctx.pathname,
-                  query: ctx.query
-                }
-              }
+                <ComposedComponent router={router} {...composedInitialProps} />
+              </ApolloProvider>
             )
           } catch (error) {
             // Prevent Apollo Client GraphQL errors from crashing SSR.
