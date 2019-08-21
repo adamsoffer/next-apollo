@@ -60,7 +60,7 @@
   "dependencies": {
     "@apollo/react-common": "^3.0.1",
     "@apollo/react-ssr": "^3.0.1",
-    "apollo-client": "^2.6.0",
+    "apollo-client": "^2.6.4",
     "isomorphic-fetch": "2.2.1",
     "lodash.isfunction": "3.0.9",
     "prop-types": "15.7.2",
