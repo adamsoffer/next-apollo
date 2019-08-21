@@ -58,8 +58,8 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@apollo/react-common": "0.1.0-beta.9",
-    "@apollo/react-ssr": "0.1.0-beta.1",
+    "@apollo/react-common": "^3.0.1",
+    "@apollo/react-ssr": "^3.0.1",
     "apollo-client": "^2.6.0",
     "isomorphic-fetch": "2.2.1",
     "lodash.isfunction": "3.0.9",
