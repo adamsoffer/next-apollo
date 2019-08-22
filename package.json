@@ -36,8 +36,11 @@
   "peerDependencies": {
     "graphql": "^14.3.1",
     "next": "^8.1.0",
-    "react-dom": "16.8.6",
-    "react": "16.8.6"
+    "react-dom": "^16.8.6",
+    "react": "^16.8.6",
+    "@apollo/react-common": "^3.0.1",
+    "@apollo/react-ssr": "^3.0.1",
+    "apollo-client": "^2.6.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -55,12 +58,12 @@
     "next": "^8.1.0",
     "prettier": "1.15.3",
     "react": "16.8.6",
-    "react-dom": "16.8.6"
-  },
-  "dependencies": {
+    "react-dom": "16.8.6",
     "@apollo/react-common": "^3.0.1",
     "@apollo/react-ssr": "^3.0.1",
-    "apollo-client": "^2.6.4",
+    "apollo-client": "^2.6.4"
+  },
+  "dependencies": {
     "isomorphic-fetch": "2.2.1",
     "lodash.isfunction": "3.0.9",
     "prop-types": "15.7.2",
