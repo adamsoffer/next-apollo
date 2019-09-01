@@ -1,6 +1,6 @@
 {
   "name": "next-apollo",
-  "version": "3.1.0",
+  "version": "3.1.2",
   "description": "React higher-order component for using the Apollo GraphQL client inside Next.js",
   "main": "./dist/index.js",
   "scripts": {
@@ -34,15 +34,15 @@
     "dist"
   ],
   "peerDependencies": {
+    "@apollo/react-hooks": "^3.0.1",
+    "apollo-boost": "^0.4.4",
     "graphql": "^14.3.1",
-    "next": "^8.1.0",
+    "next": "^9.0.5",
     "react-dom": "^16.8.6",
-    "react": "^16.8.6",
-    "@apollo/react-common": "^3.0.1",
-    "@apollo/react-ssr": "^3.0.1",
-    "apollo-client": "^2.6.4"
+    "react": "^16.8.6"
   },
   "devDependencies": {
+    "@apollo/react-hooks": "^3.0.1",
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.2.3",
@@ -51,21 +51,17 @@
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.3.1",
-    "apollo-cache-inmemory": "^1.6.0",
+    "apollo-boost": "^0.4.4",
     "graphql": "^14.3.1",
     "husky": "0.14.3",
     "lint-staged": "4.3.0",
-    "next": "^8.1.0",
+    "next": "^9.0.5",
     "prettier": "1.15.3",
     "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "@apollo/react-common": "^3.0.1",
-    "@apollo/react-ssr": "^3.0.1",
-    "apollo-client": "^2.6.4"
+    "react-dom": "16.8.6"
   },
   "dependencies": {
-    "isomorphic-fetch": "2.2.1",
-    "lodash.isfunction": "3.0.9",
+    "isomorphic-unfetch": "^3.0.0",
     "prop-types": "15.7.2",
     "prop-types-exact": "1.2.0",
     "url": "0.11.0"
