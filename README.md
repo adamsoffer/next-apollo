@@ -3,7 +3,7 @@
 A package for using Apollo within a Next.js application.
 
 Note:
-This package is ideal if you want to tuck away all the ceremony involved when using Apollo in a Next.js app. It's also ideal if you prefer to use Apollo explicitly on a _page-by-page_ basis, as it requires you to wrap each page that uses Apollo in a HOC. If you prefer to use Apollo implicitly on every page, I recommend taking a look at the [`with-apollo` example](https://github.com/zeit/next.js/tree/canary/examples/with-apollo) in the next.js repo.
+This package is an abstraction of the official next.js `with-apollo` example.
 
 ## Installation
 
