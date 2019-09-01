@@ -2,9 +2,6 @@
 
 A package for using Apollo within a Next.js application.
 
-Note:
-This package is an abstraction of the official next.js `with-apollo` example.
-
 ## Installation
 
 This project assumes you have react, react-dom, and next installed. They're specified as peerDependencies.
