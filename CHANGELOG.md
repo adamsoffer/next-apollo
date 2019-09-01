@@ -1,5 +1,8 @@
 # Change Log
 
+## [v3.1.4](https://github.com/adamsoffer/next-apollo/tree/v3.1.4) (2019-09-01)
+[Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v3.1.3...v3.1.4)
+
 ## [v3.1.3](https://github.com/adamsoffer/next-apollo/tree/v3.1.3) (2019-09-01)
 [Full Changelog](https://github.com/adamsoffer/next-apollo/compare/3.1.2...v3.1.3)
 
