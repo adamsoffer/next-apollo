@@ -7,7 +7,7 @@ A package for using Apollo within a Next.js application.
 This project assumes you have react, react-dom, and next installed. They're specified as peerDependencies.
 
 ```
-npm install --save next-apollo graphql react-apollo
+npm install --save next-apollo graphql apollo-boost @apollo/react-hooks @apollo/react-ssr
 ```
 
 ## Documentation
