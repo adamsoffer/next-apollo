@@ -1,86 +1,125 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { ApolloProvider } from '@apollo/react-common'
-import { getDataFromTree } from '@apollo/react-ssr'
+import React, { useMemo } from 'react'
 import Head from 'next/head'
-import initApollo from './initApollo'
+import { ApolloProvider } from '@apollo/react-hooks'
+import { ApolloClient, InMemoryCache, HttpLink } from 'apollo-boost'
+import fetch from 'isomorphic-unfetch'
 
-// Gets the display name of a JSX component for dev tools
-function getComponentDisplayName(Component) {
-  return Component.displayName || Component.name || 'Unknown'
-}
+let apolloClient = null
+
+const createDefaultCache = () => new InMemoryCache()
 
 export default apolloConfig => {
-  return ComposedComponent => {
-    return class WithData extends React.Component {
-      static displayName = `WithData(${getComponentDisplayName(
-        ComposedComponent
-      )})`
-      static propTypes = {
-        serverState: PropTypes.object.isRequired
+  return (PageComponent, { ssr = true } = {}) => {
+    const WithApollo = ({ apolloClient, apolloState, ...pageProps }) => {
+      const client = useMemo(
+        () => apolloClient || initApolloClient(apolloConfig, apolloState),
+        []
+      )
+      return (
+        <ApolloProvider client={client}>
+          <PageComponent {...pageProps} />
+        </ApolloProvider>
+      )
+    }
+
+    // Set the correct displayName in development
+    if (process.env.NODE_ENV !== 'production') {
+      const displayName =
+        PageComponent.displayName || PageComponent.name || 'Component'
+
+      if (displayName === 'App') {
+        console.warn('This withApollo HOC only works with PageComponents.')
       }
 
-      static async getInitialProps(ctx) {
-        let { router } = ctx
-        let serverState = { apollo: {} }
+      WithApollo.displayName = `withApollo(${displayName})`
+    }
 
-        // Evaluate the composed component's getInitialProps()
-        let composedInitialProps = {}
-        if (ComposedComponent.getInitialProps) {
-          composedInitialProps = await ComposedComponent.getInitialProps(ctx)
-        }
+    // Allow Next.js to remove getInitialProps from the browser build
+    if (typeof window === 'undefined') {
+      if (ssr) {
+        WithApollo.getInitialProps = async ctx => {
+          const { AppTree } = ctx
 
-        // Run all GraphQL queries in the component tree
-        // and extract the resulting data
-        if (!process.browser) {
-          let apollo = initApollo(apolloConfig, null, ctx)
+          let pageProps = {}
+          if (PageComponent.getInitialProps) {
+            pageProps = await PageComponent.getInitialProps(ctx)
+          }
+
+          // Run all GraphQL queries in the component tree
+          // and extract the resulting data
+          const apolloClient = initApolloClient(apolloConfig, null)
 
           try {
             // Run all GraphQL queries
-            await getDataFromTree(
-              <ApolloProvider client={apollo}>
-                <ComposedComponent router={router} {...composedInitialProps} />
-              </ApolloProvider>
+            await require('@apollo/react-ssr').getDataFromTree(
+              <AppTree
+                pageProps={{
+                  ...pageProps,
+                  apolloClient
+                }}
+              />
             )
           } catch (error) {
             // Prevent Apollo Client GraphQL errors from crashing SSR.
             // Handle them in components via the data.error prop:
-            // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
-            console.log(error)
+            // https://www.apollographql.com/docs/react/api/react-apollo.html#graphql-query-data-error
+            console.error('Error while running `getDataFromTree`', error)
           }
+
           // getDataFromTree does not call componentWillUnmount
           // head side effect therefore need to be cleared manually
           Head.rewind()
 
           // Extract query data from the Apollo store
-          serverState = {
-            apollo: {
-              data: apollo.cache.extract()
-            }
+          const apolloState = apolloClient.cache.extract()
+
+          return {
+            ...pageProps,
+            apolloState
           }
         }
-
-        return {
-          serverState,
-          ...composedInitialProps
-        }
-      }
-
-      constructor(props) {
-        super(props)
-        this.apollo = initApollo(
-          apolloConfig,
-          this.props.serverState.apollo.data
-        )
-      }
-
-      render() {
-        return (
-          <ApolloProvider client={this.apollo}>
-            <ComposedComponent {...this.props} />
-          </ApolloProvider>
-        )
       }
     }
+
+    return WithApollo
   }
+}
+
+/**
+ * Always creates a new apollo client on the server
+ * Creates or reuses apollo client in the browser.
+ * @param  {Object} initialState
+ */
+function initApolloClient(apolloConfig, initialState = {}) {
+  // Make sure to create a new client for every server-side request so that data
+  // isn't shared between connections (which would be bad)
+  if (typeof window === 'undefined') {
+    return createApolloClient(apolloConfig, initialState)
+  }
+
+  // Reuse client on the client-side
+  if (!apolloClient) {
+    apolloClient = createApolloClient(apolloConfig, initialState)
+  }
+
+  return apolloClient
+}
+
+/**
+ * Creates and configures the ApolloClient
+ * @param  {Object} [initialState={}]
+ */
+function createApolloClient(apolloConfig, initialState = {}) {
+  const createCache = apolloConfig.createCache || createDefaultCache
+
+  const config = {
+    connectToDevTools: process.browser,
+    ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
+    cache: createCache().restore(initialState || {}),
+    ...apolloConfig
+  }
+
+  delete config.createCache
+
+  return new ApolloClient(config)
 }
