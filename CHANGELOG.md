@@ -1,5 +1,14 @@
 # Change Log
 
+## [v3.1.3](https://github.com/adamsoffer/next-apollo/tree/v3.1.3) (2019-09-01)
+[Full Changelog](https://github.com/adamsoffer/next-apollo/compare/3.1.2...v3.1.3)
+
+**Closed issues:**
+
+- Ship a changelog? [\#50](https://github.com/adamsoffer/next-apollo/issues/50)
+- Cannot read property 'pathname' of undefined [\#31](https://github.com/adamsoffer/next-apollo/issues/31)
+- Dependency on next-server [\#30](https://github.com/adamsoffer/next-apollo/issues/30)
+
 ## [3.1.2](https://github.com/adamsoffer/next-apollo/tree/3.1.2) (2019-09-01)
 [Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v3.1.0...3.1.2)
 
