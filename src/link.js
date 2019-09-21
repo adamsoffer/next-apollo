@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Link from 'next/link'
 import Router from 'next/router'
 import { getDataFromTree } from '@apollo/react-ssr'
-import { execOnce } from 'next-server/dist/lib/utils'
+import { execOnce } from 'next/dist/next-server/lib/utils'
 import exact from 'prop-types-exact'
 import { format, resolve, parse } from 'url'
 
