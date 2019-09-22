@@ -1,5 +1,16 @@
 # Change Log
 
+## [v3.1.5](https://github.com/adamsoffer/next-apollo/tree/v3.1.5) (2019-09-22)
+[Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v3.1.4...v3.1.5)
+
+**Closed issues:**
+
+- Module not found [\#55](https://github.com/adamsoffer/next-apollo/issues/55)
+
+**Merged pull requests:**
+
+- Fix next-server reference in Link [\#56](https://github.com/adamsoffer/next-apollo/pull/56) ([freeatnet](https://github.com/freeatnet))
+
 ## [v3.1.4](https://github.com/adamsoffer/next-apollo/tree/v3.1.4) (2019-09-01)
 [Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v3.1.3...v3.1.4)
 
