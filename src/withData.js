@@ -79,6 +79,10 @@ export default apolloConfig => {
           }
         }
       }
+    } else if (PageComponent.getInitialProps) {
+      WithApollo.getInitialProps = async ctx => {
+        return await PageComponent.getInitialProps(ctx)
+      }
     }
 
     return WithApollo
