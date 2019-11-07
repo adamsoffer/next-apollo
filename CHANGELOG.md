@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/adamsoffer/next-apollo/tree/HEAD)
-
-[Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v3.1.6...HEAD)
+## [v3.1.9](https://github.com/adamsoffer/next-apollo/tree/v3.1.9) (2019-11-07)
+[Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v3.1.6...v3.1.9)
 
 **Closed issues:**
 
