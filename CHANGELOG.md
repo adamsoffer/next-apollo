@@ -1,5 +1,12 @@
 # Change Log
 
+## [v3.1.10](https://github.com/adamsoffer/next-apollo/tree/v3.1.10) (2019-11-18)
+[Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v3.1.9...v3.1.10)
+
+**Merged pull requests:**
+
+- Adds babel/runtime to the dependencies [\#64](https://github.com/adamsoffer/next-apollo/pull/64) ([arcanis](https://github.com/arcanis))
+
 ## [v3.1.9](https://github.com/adamsoffer/next-apollo/tree/v3.1.9) (2019-11-07)
 [Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v3.1.6...v3.1.9)
 
@@ -12,7 +19,7 @@
 - Expose apolloClient in pageContext [\#62](https://github.com/adamsoffer/next-apollo/pull/62) ([guibernardino](https://github.com/guibernardino))
 
 ## [v3.1.6](https://github.com/adamsoffer/next-apollo/tree/v3.1.6) (2019-10-30)
-[Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v3.1.8...v3.1.6)
+[Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v3.1.5...v3.1.6)
 
 **Closed issues:**
 
@@ -23,9 +30,6 @@
 **Merged pull requests:**
 
 - ensures getInitialProps of wrapped component can be run [\#61](https://github.com/adamsoffer/next-apollo/pull/61) ([gregorskii](https://github.com/gregorskii))
-
-## [v3.1.8](https://github.com/adamsoffer/next-apollo/tree/v3.1.8) (2019-09-22)
-[Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v3.1.5...v3.1.8)
 
 ## [v3.1.5](https://github.com/adamsoffer/next-apollo/tree/v3.1.5) (2019-09-22)
 [Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v3.1.4...v3.1.5)
