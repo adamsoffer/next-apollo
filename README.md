@@ -16,7 +16,8 @@ Create an Apollo configuration object (check out the [Apollo Client API](https:/
 
 ```jsx
 import { withData } from 'next-apollo'
-import { HttpLink } from 'apollo-link-http'
+import { HttpLink } from 'apollo-boost'
+
 
 // can also be a function that accepts a `context` object (SSR only) and returns a config
 const config = {
