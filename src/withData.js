@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { ApolloClient, InMemoryCache, HttpLink } from 'apollo-boost'
 import fetch from 'isomorphic-unfetch'
+import { isFunction } from 'lodash'
 
 let apolloClient = null
 
@@ -40,7 +41,11 @@ export default apolloConfig => {
 
         // Initialize ApolloClient, add it to the ctx object so
         // we can use it in `PageComponent.getInitialProp`.
-        const apolloClient = (ctx.apolloClient = initApolloClient(apolloConfig, null))
+        const apolloClient = (ctx.apolloClient = initApolloClient(
+          apolloConfig,
+          null,
+          ctx
+        ))
 
         // Run wrapped getInitialProps methods
         let pageProps = {}
@@ -101,7 +106,10 @@ export default apolloConfig => {
  * Creates or reuses apollo client in the browser.
  * @param  {Object} initialState
  */
-function initApolloClient(apolloConfig, initialState = {}) {
+function initApolloClient(apolloConfig, initialState = {}, ctx) {
+  if (isFunction(apolloConfig)) {
+    apolloConfig = apolloConfig(ctx)
+  }
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
   if (typeof window === 'undefined') {
