@@ -2,14 +2,9 @@ import React, { useMemo } from 'react'
 import Head from 'next/head'
 import { NextPageContext, NextPage } from 'next'
 import { ApolloProvider } from '@apollo/react-hooks'
-import {
-  ApolloClient,
-  InMemoryCache,
-  HttpLink,
-  ApolloClientOptions
-} from 'apollo-boost'
+import { ApolloClient, InMemoryCache, ApolloClientOptions } from 'apollo-boost'
 import { ApolloCache } from 'apollo-cache'
-import fetch from 'isomorphic-unfetch'
+import 'isomorphic-unfetch' // Use as a global polyfill, see https://www.npmjs.com/package/isomorphic-unfetch#usage
 import { isFunction } from 'lodash'
 
 type ApolloCacheShape = any
@@ -96,8 +91,11 @@ type WithApolloProps = {
   apolloState?: ApolloCacheShape
 }
 
-export default (apolloConfig: NextApolloConfig): NextPage => {
-  return (PageComponent: NextPage, { ssr = true } = {}) => {
+export default (apolloConfig: NextApolloConfig) => {
+  return (
+    PageComponent: NextPage,
+    { ssr = true } = {}
+  ): NextPage<WithApolloProps> => {
     const WithApollo: NextPage<WithApolloProps> = ({
       apolloClient,
       apolloState,
