@@ -29,6 +29,64 @@ let apolloClient: ApolloClient<ApolloCache<ApolloCacheShape>>
 
 const createDefaultCache: CreateCacheFunction = () => new InMemoryCache()
 
+/**
+ * Creates and configures the ApolloClient
+ * @param  {Object} [apolloConfig]
+ * @param  {Object} [initialState={}]
+ */
+function createApolloClient(
+  apolloConfig: NextApolloClientOptions,
+  initialState = {}
+): ApolloClient<ApolloCache<ApolloCacheShape>> {
+  const createCache = apolloConfig.createCache || createDefaultCache
+
+  const config = {
+    ssrMode: typeof window === 'undefined', // Disables forceFetch on the server (so queries are only run once)
+    cache: createCache().restore(initialState || {}),
+    ...apolloConfig
+  }
+
+  delete config.createCache
+
+  return new ApolloClient(config)
+}
+
+/**
+ * Always creates a new apollo client on the server
+ * Creates or reuses apollo client in the browser.
+ * @param  {Object} initialState
+ */
+function initApolloClient(
+  nextApolloConfig: NextApolloConfig,
+  initialState = {},
+  ctx: NextPageContext
+): ApolloClient<ApolloCache<ApolloCacheShape>> {
+  let apolloConfig: NextApolloClientOptions
+
+  if (nextApolloConfig instanceof ApolloClient) {
+    return nextApolloConfig
+  }
+
+  if (isFunction(nextApolloConfig)) {
+    apolloConfig = nextApolloConfig(ctx)
+  } else {
+    apolloConfig = nextApolloConfig
+  }
+
+  // Make sure to create a new client for every server-side request so that data
+  // isn't shared between connections (which would be bad)
+  if (typeof window === 'undefined') {
+    return createApolloClient(apolloConfig, initialState)
+  }
+
+  // Reuse client on the client-side
+  if (!apolloClient) {
+    apolloClient = createApolloClient(apolloConfig, initialState)
+  }
+
+  return apolloClient
+}
+
 export default apolloConfig => {
   return (PageComponent, { ssr = true } = {}) => {
     const WithApollo = ({ apolloClient, apolloState, ...pageProps }) => {
@@ -119,62 +177,4 @@ export default apolloConfig => {
 
     return WithApollo
   }
-}
-
-/**
- * Always creates a new apollo client on the server
- * Creates or reuses apollo client in the browser.
- * @param  {Object} initialState
- */
-function initApolloClient(
-  nextApolloConfig: NextApolloConfig,
-  initialState = {},
-  ctx: NextPageContext
-): ApolloClient<ApolloCache<ApolloCacheShape>> {
-  let apolloConfig: NextApolloClientOptions
-
-  if (nextApolloConfig instanceof ApolloClient) {
-    return nextApolloConfig
-  }
-
-  if (isFunction(nextApolloConfig)) {
-    apolloConfig = nextApolloConfig(ctx)
-  } else {
-    apolloConfig = nextApolloConfig
-  }
-
-  // Make sure to create a new client for every server-side request so that data
-  // isn't shared between connections (which would be bad)
-  if (typeof window === 'undefined') {
-    return createApolloClient(apolloConfig, initialState)
-  }
-
-  // Reuse client on the client-side
-  if (!apolloClient) {
-    apolloClient = createApolloClient(apolloConfig, initialState)
-  }
-
-  return apolloClient
-}
-
-/**
- * Creates and configures the ApolloClient
- * @param  {Object} [apolloConfig]
- * @param  {Object} [initialState={}]
- */
-function createApolloClient(
-  apolloConfig: NextApolloClientOptions,
-  initialState = {}
-): ApolloClient<ApolloCache<ApolloCacheShape>> {
-  const createCache = apolloConfig.createCache || createDefaultCache
-
-  const config = {
-    ssrMode: typeof window === 'undefined', // Disables forceFetch on the server (so queries are only run once)
-    cache: createCache().restore(initialState || {}),
-    ...apolloConfig
-  }
-
-  delete config.createCache
-
-  return new ApolloClient(config)
 }
