@@ -1,13 +1,33 @@
 import React, { useMemo } from 'react'
 import Head from 'next/head'
+import { NextPageContext } from 'next'
 import { ApolloProvider } from '@apollo/react-hooks'
-import { ApolloClient, InMemoryCache, HttpLink } from 'apollo-boost'
+import {
+  ApolloClient,
+  InMemoryCache,
+  HttpLink,
+  ApolloClientOptions
+} from 'apollo-boost'
+import { ApolloCache } from 'apollo-cache'
 import fetch from 'isomorphic-unfetch'
 import { isFunction } from 'lodash'
 
-let apolloClient = null
+type ApolloCacheShape = any
+type CreateCacheFunction = () => ApolloCache<ApolloCacheShape>
+type NextApolloClientOptions = ApolloClientOptions<ApolloCacheShape> & {
+  createCache: CreateCacheFunction | null | undefined
+}
+type NextApolloConfigFunction = (
+  ctx: NextPageContext
+) => NextApolloClientOptions
+type NextApolloConfig =
+  | NextApolloClientOptions
+  | ApolloClient<ApolloCache<ApolloCacheShape>>
+  | NextApolloConfigFunction
 
-const createDefaultCache = () => new InMemoryCache()
+let apolloClient: ApolloClient<ApolloCache<ApolloCacheShape>>
+
+const createDefaultCache: CreateCacheFunction = () => new InMemoryCache()
 
 export default apolloConfig => {
   return (PageComponent, { ssr = true } = {}) => {
@@ -106,10 +126,23 @@ export default apolloConfig => {
  * Creates or reuses apollo client in the browser.
  * @param  {Object} initialState
  */
-function initApolloClient(apolloConfig, initialState = {}, ctx) {
-  if (isFunction(apolloConfig)) {
-    apolloConfig = apolloConfig(ctx)
+function initApolloClient(
+  nextApolloConfig: NextApolloConfig,
+  initialState = {},
+  ctx: NextPageContext
+): ApolloClient<ApolloCache<ApolloCacheShape>> {
+  let apolloConfig: NextApolloClientOptions
+
+  if (nextApolloConfig instanceof ApolloClient) {
+    return nextApolloConfig
   }
+
+  if (isFunction(nextApolloConfig)) {
+    apolloConfig = nextApolloConfig(ctx)
+  } else {
+    apolloConfig = nextApolloConfig
+  }
+
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
   if (typeof window === 'undefined') {
@@ -126,9 +159,13 @@ function initApolloClient(apolloConfig, initialState = {}, ctx) {
 
 /**
  * Creates and configures the ApolloClient
+ * @param  {Object} [apolloConfig]
  * @param  {Object} [initialState={}]
  */
-function createApolloClient(apolloConfig, initialState = {}) {
+function createApolloClient(
+  apolloConfig: NextApolloClientOptions,
+  initialState = {}
+): ApolloClient<ApolloCache<ApolloCacheShape>> {
   const createCache = apolloConfig.createCache || createDefaultCache
 
   const config = {
