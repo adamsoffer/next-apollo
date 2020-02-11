@@ -36,7 +36,7 @@ const createDefaultCache: CreateCacheFunction = () => new InMemoryCache()
  */
 function createApolloClient(
   apolloConfig: NextApolloClientOptions,
-  initialState = {}
+  initialState: ApolloCacheShape = {}
 ): ApolloClient<ApolloCache<ApolloCacheShape>> {
   const createCache = apolloConfig.createCache || createDefaultCache
 
@@ -58,7 +58,7 @@ function createApolloClient(
  */
 function initApolloClient(
   nextApolloConfig: NextApolloConfig,
-  initialState = {},
+  initialState: ApolloCacheShape = {},
   ctx: NextPageContext
 ): ApolloClient<ApolloCache<ApolloCacheShape>> {
   let apolloConfig: NextApolloClientOptions
