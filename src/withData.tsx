@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import Head from 'next/head'
-import { NextPageContext } from 'next'
+import { NextPageContext, NextPage } from 'next'
 import { ApolloProvider } from '@apollo/react-hooks'
 import {
   ApolloClient,
@@ -15,15 +15,19 @@ import { isFunction } from 'lodash'
 type ApolloCacheShape = any
 type CreateCacheFunction = () => ApolloCache<ApolloCacheShape>
 type NextApolloClientOptions = ApolloClientOptions<ApolloCacheShape> & {
-  createCache: CreateCacheFunction | null | undefined
+  createCache?: CreateCacheFunction | null
 }
 type NextApolloConfigFunction = (
-  ctx: NextPageContext
+  ctx?: NextPageContext
 ) => NextApolloClientOptions
 type NextApolloConfig =
   | NextApolloClientOptions
   | ApolloClient<ApolloCache<ApolloCacheShape>>
   | NextApolloConfigFunction
+
+type NextPageContextWithApollo = NextPageContext & {
+  apolloClient: ApolloClient<ApolloCacheShape>
+}
 
 let apolloClient: ApolloClient<ApolloCache<ApolloCacheShape>>
 
@@ -59,7 +63,7 @@ function createApolloClient(
 function initApolloClient(
   nextApolloConfig: NextApolloConfig,
   initialState: ApolloCacheShape = {},
-  ctx: NextPageContext
+  ctx?: NextPageContext
 ): ApolloClient<ApolloCache<ApolloCacheShape>> {
   let apolloConfig: NextApolloClientOptions
 
@@ -87,11 +91,22 @@ function initApolloClient(
   return apolloClient
 }
 
-export default apolloConfig => {
-  return (PageComponent, { ssr = true } = {}) => {
-    const WithApollo = ({ apolloClient, apolloState, ...pageProps }) => {
+type WithApolloProps = {
+  apolloClient?: ApolloClient<ApolloCache<ApolloCacheShape>>
+  apolloState?: ApolloCacheShape
+}
+
+export default (apolloConfig: NextApolloConfig): NextPage => {
+  return (PageComponent: NextPage, { ssr = true } = {}) => {
+    const WithApollo: NextPage<WithApolloProps> = ({
+      apolloClient,
+      apolloState,
+      ...pageProps
+    }) => {
       const client = useMemo(
-        () => apolloClient || initApolloClient(apolloConfig, apolloState),
+        () =>
+          apolloClient ||
+          initApolloClient(apolloConfig, apolloState, undefined),
         []
       )
       return (
@@ -114,21 +129,20 @@ export default apolloConfig => {
     }
 
     if (ssr || PageComponent.getInitialProps) {
-      WithApollo.getInitialProps = async ctx => {
+      WithApollo.getInitialProps = async (ctx): Promise<WithApolloProps> => {
         const { AppTree } = ctx
 
         // Initialize ApolloClient, add it to the ctx object so
         // we can use it in `PageComponent.getInitialProp`.
-        const apolloClient = (ctx.apolloClient = initApolloClient(
-          apolloConfig,
-          null,
-          ctx
-        ))
+        const apolloClient = initApolloClient(apolloConfig, null, ctx)
+        Object.assign(ctx as NextPageContextWithApollo, { apolloClient })
 
         // Run wrapped getInitialProps methods
         let pageProps = {}
         if (PageComponent.getInitialProps) {
-          pageProps = await PageComponent.getInitialProps(ctx)
+          pageProps = await PageComponent.getInitialProps(
+            ctx as NextPageContextWithApollo
+          )
         }
 
         // Only on the server:
@@ -136,7 +150,7 @@ export default apolloConfig => {
           // When redirecting, the response is finished.
           // No point in continuing to render
           if (ctx.res && ctx.res.finished) {
-            return pageProps
+            return pageProps as NextPageContextWithApollo
           }
 
           // Only if ssr is enabled
