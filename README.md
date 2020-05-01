@@ -7,7 +7,7 @@ A package for using Apollo within a Next.js application.
 This project assumes you have react, react-dom, and next installed. They're specified as peerDependencies.
 
 ```
-npm install --save next-apollo graphql apollo-boost @apollo/react-hooks @apollo/react-ssr isomorphic-fetch
+npm install --save next-apollo graphql apollo-boost @apollo/react-hooks @apollo/react-ssr
 ```
 
 ## Documentation
@@ -17,12 +17,10 @@ Create an Apollo Client, pass it into to the `withApollo` higher-order component
 ```jsx
 import { withApollo } from 'next-apollo'
 import ApolloClient, { InMemoryCache } from 'apollo-boost';
-import fetch from "isomorphic-unfetch";
 
 const apolloClient = new ApolloClient({
   uri: "https://api.graph.cool/simple/v1/cixmkt2ul01q00122mksg82pn",
-  cache: new InMemoryCache(),
-  fetch,
+  cache: new InMemoryCache()
 });
 
 export default withApollo(apolloClient)

@@ -1,6 +1,6 @@
 {
   "name": "next-apollo",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "React higher-order component for using the Apollo GraphQL client inside Next.js",
   "main": "./dist/index.js",
   "scripts": {
@@ -38,7 +38,6 @@
     "@apollo/react-ssr": "^3.1.5",
     "apollo-boost": "^0.4.7",
     "graphql": "^15.0.0",
-    "isomorphic-unfetch": "^3.0.0",
     "next": "^9.3.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
