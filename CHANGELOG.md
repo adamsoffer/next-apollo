@@ -1,5 +1,14 @@
 # Changelog
 
+## [v4.0.1](https://github.com/adamsoffer/next-apollo/tree/v4.0.1) (2020-05-01)
+
+[Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v4.0.0...v4.0.1)
+
+**Closed issues:**
+
+- Add additional getInitialProps to withData [\#63](https://github.com/adamsoffer/next-apollo/issues/63)
+- Server side authentication with cookies [\#60](https://github.com/adamsoffer/next-apollo/issues/60)
+
 ## [v4.0.0](https://github.com/adamsoffer/next-apollo/tree/v4.0.0) (2020-05-01)
 
 [Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v3.1.10...v4.0.0)
@@ -103,7 +112,6 @@
 
 - Upgrade apollo-common to ^3.0.1 and move @apollo packages to peerDependencies [\#52](https://github.com/adamsoffer/next-apollo/pull/52) ([MrOrz](https://github.com/MrOrz))
 - Bump js-yaml from 3.12.1 to 3.13.1 [\#48](https://github.com/adamsoffer/next-apollo/pull/48) ([dependabot[bot]](https://github.com/apps/dependabot))
-- migrate to apollo-boost [\#38](https://github.com/adamsoffer/next-apollo/pull/38) ([ascott1](https://github.com/ascott1))
 
 ## [v3.0.3](https://github.com/adamsoffer/next-apollo/tree/v3.0.3) (2019-07-28)
 
@@ -187,6 +195,7 @@
 
 **Merged pull requests:**
 
+- migrate to apollo-boost [\#38](https://github.com/adamsoffer/next-apollo/pull/38) ([ascott1](https://github.com/ascott1))
 - Move react, react-dom, react-apollo, graphql to peerDependencies [\#36](https://github.com/adamsoffer/next-apollo/pull/36) ([Hilaryous](https://github.com/Hilaryous))
 - Adds missing comma to example in README. [\#27](https://github.com/adamsoffer/next-apollo/pull/27) ([tmr08c](https://github.com/tmr08c))
 
