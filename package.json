@@ -1,6 +1,6 @@
 {
   "name": "next-apollo",
-  "version": "3.1.10",
+  "version": "4.0.0",
   "description": "React higher-order component for using the Apollo GraphQL client inside Next.js",
   "main": "./dist/index.js",
   "scripts": {
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ads1018/next-apollo.git"
+    "url": "git+https://github.com/adamsoffer/next-apollo.git"
   },
   "keywords": [
     "nextjs",
@@ -27,47 +27,48 @@
   "author": "Adam Soffer",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ads1018/next-apollo/issues"
+    "url": "https://github.com/adamsoffer/next-apollo/issues"
   },
-  "homepage": "https://github.com/ads1018/next-apollo#readme",
+  "homepage": "https://github.com/adamsoffer/next-apollo#readme",
   "files": [
     "dist"
   ],
   "peerDependencies": {
-    "@apollo/react-hooks": "^3.0.1",
-    "@apollo/react-ssr": "^3.0.1",
-    "apollo-boost": "^0.4.4",
-    "graphql": "^14.3.1",
-    "next": "^9.0.6",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "@apollo/react-hooks": "^3.1.5",
+    "@apollo/react-ssr": "^3.1.5",
+    "apollo-boost": "^0.4.7",
+    "graphql": "^15.0.0",
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^9.3.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@apollo/react-hooks": "^3.0.1",
-    "@apollo/react-ssr": "^3.0.1",
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-class-properties": "^7.2.3",
-    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
-    "@babel/plugin-transform-runtime": "^7.2.0",
-    "@babel/preset-env": "^7.2.3",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/runtime": "^7.3.1",
-    "apollo-boost": "^0.4.4",
-    "graphql": "^14.3.1",
-    "husky": "0.14.3",
-    "lint-staged": "4.3.0",
-    "next": "^9.0.6",
-    "prettier": "1.15.3",
-    "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "@apollo/react-hooks": "^3.1.5",
+    "@apollo/react-ssr": "^3.1.5",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/runtime": "^7.9.6",
+    "apollo-boost": "^0.4.7",
+    "graphql": "^15.0.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.1",
+    "next": "^9.3.6",
+    "prettier": "^2.0.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "dependencies": {
-    "@babel/runtime": "^7.4.5",
+    "@babel/runtime": "^7.9.6",
     "isomorphic-unfetch": "^3.0.0",
     "lodash": "^4.17.15",
-    "prop-types": "15.7.2",
-    "prop-types-exact": "1.2.0",
-    "url": "0.11.0"
+    "prop-types": "^15.7.2",
+    "prop-types-exact": "^1.2.0",
+    "url": "^0.11.0"
   }
 }
