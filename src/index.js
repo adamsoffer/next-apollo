@@ -1,4 +1,3 @@
-import withData from './withData'
-import Link, { prefetch } from './link'
+import withApollo from "./withApollo";
 
-export { withData, Link, prefetch }
+export { withApollo };
