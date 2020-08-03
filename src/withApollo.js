@@ -1,8 +1,7 @@
 import React from "react";
 import App from "next/app";
 import Head from "next/head";
-import { ApolloProvider } from "@apollo/react-hooks";
-import fetch from "isomorphic-unfetch";
+import { ApolloProvider } from "@apollo/client";
 
 // On the client, we store the Apollo Client in the following variable.
 // This prevents the client from reinitializing between page transitions.
@@ -182,7 +181,6 @@ function createApolloClient(apolloClient, initialState, ctx) {
   // use it to extract auth headers (ctx.req) or similar.
   apolloClient.ssrMode = Boolean(ctx);
   apolloClient.cache.restore(initialState);
-  apolloClient.fetch = fetch;
 
   return apolloClient;
 }
