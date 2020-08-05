@@ -1,8 +1,7 @@
 import React from "react";
 import App from "next/app";
 import Head from "next/head";
-import { ApolloProvider } from "@apollo/react-hooks";
-import fetch from "isomorphic-unfetch";
+import { ApolloProvider } from "@apollo/client";
 
 // On the client, we store the Apollo Client in the following variable.
 // This prevents the client from reinitializing between page transitions.
@@ -132,7 +131,7 @@ export default (ac) => {
             try {
               // Import `@apollo/react-ssr` dynamically.
               // We don't want to have this in our client bundle.
-              const { getDataFromTree } = await import("@apollo/react-ssr");
+              const { getDataFromTree } = await import("@apollo/client/react/ssr");
 
               // Since AppComponents and PageComponents have different context types
               // we need to modify their props a little.
@@ -182,7 +181,6 @@ function createApolloClient(apolloClient, initialState, ctx) {
   // use it to extract auth headers (ctx.req) or similar.
   apolloClient.ssrMode = Boolean(ctx);
   apolloClient.cache.restore(initialState);
-  apolloClient.fetch = fetch;
 
   return apolloClient;
 }
