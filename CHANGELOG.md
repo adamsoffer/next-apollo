@@ -1,5 +1,23 @@
 # Changelog
 
+## [Unreleased](https://github.com/adamsoffer/next-apollo/tree/HEAD)
+
+[Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v4.0.1...HEAD)
+
+**Fixed bugs:**
+
+- Next v8+ breaks Data Prefetching [\#26](https://github.com/adamsoffer/next-apollo/issues/26)
+
+**Closed issues:**
+
+- Usage with static generation [\#73](https://github.com/adamsoffer/next-apollo/issues/73)
+- Typescript support? [\#66](https://github.com/adamsoffer/next-apollo/issues/66)
+
+**Merged pull requests:**
+
+- Updated apollo client \(v3\) [\#77](https://github.com/adamsoffer/next-apollo/pull/77) ([qathom](https://github.com/qathom))
+- Bump lodash from 4.17.15 to 4.17.19 [\#75](https://github.com/adamsoffer/next-apollo/pull/75) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v4.0.1](https://github.com/adamsoffer/next-apollo/tree/v4.0.1) (2020-05-01)
 
 [Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v4.0.0...v4.0.1)
