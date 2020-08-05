@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/adamsoffer/next-apollo/tree/HEAD)
+## [v5.0.0](https://github.com/adamsoffer/next-apollo/tree/v5.0.0) (2020-08-05)
 
-[Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v4.0.1...HEAD)
+[Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v4.0.1...v5.0.0)
 
 **Fixed bugs:**
 
