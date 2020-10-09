@@ -35,10 +35,10 @@
     "dist"
   ],
   "peerDependencies": {
-    "graphql": "^15.0.0",
     "next": "^9.3.6",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "@apollo/client": "^3.0.0",
+    "graphql": "^14.0.0 || ^15.0.0",
+    "react": "^16.8.0"
   },
   "devDependencies": {
     "@apollo/client": "^3.2.2",
@@ -46,13 +46,11 @@
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@types/react": "^16.9.51",
     "@types/react-dom": "^16.9.8",
-    "graphql": "^15.0.0",
-    "husky": "^4.2.5",
-    "lint-staged": "^10.2.1",
-    "next": "^9.3.6",
-    "prettier": "^2.0.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "graphql": "^15.3.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "next": "^9.5.4",
+    "prettier": "^2.1.2",
     "rollup": "^2.29.0",
     "rollup-plugin-peer-deps-external": "^2.2.3",
     "rollup-plugin-terser": "^7.0.2",
