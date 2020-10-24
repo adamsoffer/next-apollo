@@ -15,24 +15,25 @@ npm install --save next-apollo graphql @apollo/client
 Create an Apollo Client, pass it into to the `withApollo` higher-order component and export the returned component.
 
 ```jsx
-import { withApollo } from 'next-apollo'
-import ApolloClient, { InMemoryCache } from 'apollo-boost';
+import { withApollo } from "next-apollo";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 const apolloClient = new ApolloClient({
   uri: "https://api.graph.cool/simple/v1/cixmkt2ul01q00122mksg82pn",
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 });
 
-export default withApollo(apolloClient)
+export default withApollo(apolloClient);
 ```
 
 Inside your Next.js page, wrap your component with your exported higher order component.
 
 ```jsx
-import withApollo from '../lib/apollo'
+import withApollo from "../lib/apollo";
 
-const Page = props => <div>Hello World</div>
+const Page = (props) => <div>Hello World</div>;
 
+// Default export is required for Fast Refresh
 export default withApollo({ ssr: true })(Page);
 ```
 

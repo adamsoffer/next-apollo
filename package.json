@@ -3,8 +3,9 @@
   "version": "5.0.0",
   "description": "React higher-order component for using the Apollo GraphQL client inside Next.js",
   "main": "./dist/index.js",
+  "module": "./dist/index.es.js",
   "scripts": {
-    "build": "babel src --out-dir dist",
+    "build": "rollup -c rollup.config.ts",
     "prepublish": "npm run build",
     "precommit": "lint-staged"
   },
@@ -34,36 +35,27 @@
     "dist"
   ],
   "peerDependencies": {
-    "graphql": "^15.0.0",
     "next": "^9.3.6",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "@apollo/client": "^3.0.0",
+    "graphql": "^14.0.0 || ^15.0.0",
+    "react": "^16.8.0"
   },
   "devDependencies": {
-    "@apollo/client": "^3.1.1",
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.6",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
-    "@babel/plugin-transform-runtime": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
-    "@babel/preset-react": "^7.9.4",
-    "@babel/runtime": "^7.9.6",
-    "apollo-boost": "^0.4.7",
-    "graphql": "^15.0.0",
-    "husky": "^4.2.5",
-    "lint-staged": "^10.2.1",
-    "next": "^9.3.6",
-    "prettier": "^2.0.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "@apollo/client": "^3.2.2",
+    "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@types/react": "^16.9.51",
+    "@types/react-dom": "^16.9.8",
+    "graphql": "^15.3.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "next": "^9.5.4",
+    "prettier": "^2.1.2",
+    "rollup": "^2.29.0",
+    "rollup-plugin-peer-deps-external": "^2.2.3",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.27.3",
+    "typescript": "^4.0.3"
   },
-  "dependencies": {
-    "@babel/runtime": "^7.9.6",
-    "isomorphic-unfetch": "^3.0.0",
-    "lodash": "^4.17.15",
-    "prop-types": "^15.7.2",
-    "prop-types-exact": "^1.2.0",
-    "url": "^0.11.0"
-  }
+  "dependencies": {}
 }
