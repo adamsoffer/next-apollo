@@ -1,5 +1,19 @@
 # Changelog
 
+## [v5.0.1](https://github.com/adamsoffer/next-apollo/tree/v5.0.1) (2020-10-24)
+
+[Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v5.0.0...v5.0.1)
+
+**Closed issues:**
+
+- New release: apollo-client v3 [\#78](https://github.com/adamsoffer/next-apollo/issues/78)
+- Rewrite in Typescript [\#71](https://github.com/adamsoffer/next-apollo/issues/71)
+
+**Merged pull requests:**
+
+- TypeScript support \(\#71\) [\#81](https://github.com/adamsoffer/next-apollo/pull/81) ([impulse](https://github.com/impulse))
+- Bump elliptic from 6.5.2 to 6.5.3 [\#76](https://github.com/adamsoffer/next-apollo/pull/76) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v5.0.0](https://github.com/adamsoffer/next-apollo/tree/v5.0.0) (2020-08-05)
 
 [Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v4.0.1...v5.0.0)
@@ -44,10 +58,6 @@
 
 [Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v3.1.9...v3.1.10)
 
-**Merged pull requests:**
-
-- Adds babel/runtime to the dependencies [\#64](https://github.com/adamsoffer/next-apollo/pull/64) ([arcanis](https://github.com/arcanis))
-
 ## [v3.1.9](https://github.com/adamsoffer/next-apollo/tree/v3.1.9) (2019-11-07)
 
 [Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v3.1.6...v3.1.9)
@@ -84,6 +94,7 @@
 
 **Merged pull requests:**
 
+- Adds babel/runtime to the dependencies [\#64](https://github.com/adamsoffer/next-apollo/pull/64) ([arcanis](https://github.com/arcanis))
 - Fix next-server reference in Link [\#56](https://github.com/adamsoffer/next-apollo/pull/56) ([freeatnet](https://github.com/freeatnet))
 
 ## [v3.1.4](https://github.com/adamsoffer/next-apollo/tree/v3.1.4) (2019-09-01)
