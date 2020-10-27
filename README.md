@@ -1,6 +1,8 @@
 # Next Apollo [![Build Status](https://travis-ci.org/adamsoffer/next-apollo.svg?branch=master)](https://travis-ci.org/adamsoffer/next-apollo)
 A package for using Apollo within a Next.js application.
 
+[Demo](https://next-with-apollo.vercel.app/)
+
 ## Installation
 
 This project assumes you have react, react-dom, and next installed. They're specified as peerDependencies.
