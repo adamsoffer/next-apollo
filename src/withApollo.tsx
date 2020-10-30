@@ -22,6 +22,9 @@ type ContextWithApolloOptions = AppContext & {
 } & NextPageContext &
   WithApolloOptions;
 
+type ApolloClientParam = ApolloClient<NormalizedCacheObject>
+  | ((ctx?: NextPageContext) => ApolloClient<NormalizedCacheObject>)
+
 /**
  * Installs the Apollo Client on NextPageContext
  * or NextAppContext. Useful if you want to use apolloClient
@@ -29,9 +32,10 @@ type ContextWithApolloOptions = AppContext & {
  * @param {NextPageContext | AppContext} ctx
  */
 export const initOnContext = (
-  ac: ApolloClient<NormalizedCacheObject>,
+  acp: ApolloClientParam,
   ctx: ContextWithApolloOptions
 ) => {
+  const ac = typeof acp === 'function' ? acp(ctx) : acp as ApolloClient<NormalizedCacheObject>; 
   const inAppContext = Boolean(ctx.ctx);
 
   // We consider installing `withApollo({ ssr: true })` on global App level
@@ -76,10 +80,12 @@ export const initOnContext = (
  * @param  {NextPageContext} ctx
  */
 const initApolloClient = (
-  apolloClient: ApolloClient<NormalizedCacheObject>,
+  acp: ApolloClientParam,
   initialState: NormalizedCacheObject,
   ctx: NextPageContext | undefined
 ) => {
+  const apolloClient = typeof acp === 'function' ? acp(ctx) : acp as ApolloClient<NormalizedCacheObject>; 
+  
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
   if (typeof window === "undefined") {
@@ -98,11 +104,11 @@ const initApolloClient = (
  * Creates a withApollo HOC
  * that provides the apolloContext
  * to a next.js Page or AppTree.
- * @param  {Object} withApolloOptions
+ * @param  {Object} ac
  * @param  {Boolean} [withApolloOptions.ssr=false]
  * @returns {(PageComponent: NextPage) => ComponentClass<P> | FunctionComponent<P>}
  */
-export default (ac: ApolloClient<NormalizedCacheObject>) => {
+export default (ac: ApolloClientParam) => {
   return ({ ssr = false } = {}) => (PageComponent: NextPage) => {
     const WithApollo = ({
       apolloClient,
@@ -211,10 +217,11 @@ export default (ac: ApolloClient<NormalizedCacheObject>) => {
 };
 
 const createApolloClient = (
-  apolloClient: ApolloClient<NormalizedCacheObject>,
+  acp: ApolloClientParam,
   initialState: NormalizedCacheObject,
   ctx: NextPageContext | undefined
-) => {
+  ) => {
+  const apolloClient = typeof acp === 'function' ? acp(ctx) : acp as ApolloClient<NormalizedCacheObject>;
   // The `ctx` (NextPageContext) will only be present on the server.
   // use it to extract auth headers (ctx.req) or similar.
   (apolloClient as ApolloClient<NormalizedCacheObject> & {
