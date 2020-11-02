@@ -106,22 +106,18 @@ const initApolloClient = (
  * to a next.js Page or AppTree.
  * @param  {Object} ac
  * @param  {Boolean} [withApolloOptions.ssr=false]
- * @returns {(PageComponent: NextPage) => ComponentClass<P> | FunctionComponent<P>}
+ * @returns {(PageComponent: NextPage<P>) => ComponentClass<P> | FunctionComponent<P>}
  */
-export default (ac: ApolloClientParam) => {
-  return ({ ssr = false } = {}) => (PageComponent: NextPage) => {
-    const WithApollo = ({
-      apolloClient,
-      apolloState,
-      ...pageProps
-    }: WithApolloOptions) => {
+export default function withApollo<P, IP>(ac: ApolloClientParam) {
+  return ({ ssr = false } = {}) => (PageComponent: NextPage<P, IP>) => {
+    const WithApollo = (pageProps: P & WithApolloOptions) => {
       let client: ApolloClient<NormalizedCacheObject>;
-      if (apolloClient) {
+      if (pageProps.apolloClient) {
         // Happens on: getDataFromTree & next.js ssr
-        client = apolloClient;
+        client = pageProps.apolloClient;
       } else {
         // Happens on: next.js csr
-        client = initApolloClient(ac, apolloState, undefined);
+        client = initApolloClient(ac, pageProps.apolloState, undefined);
       }
 
       return (
