@@ -1,5 +1,25 @@
 # Changelog
 
+## [v5.0.3](https://github.com/adamsoffer/next-apollo/tree/v5.0.3) (2020-11-02)
+
+[Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v5.0.2...v5.0.3)
+
+**Closed issues:**
+
+- Can we have an access to context ctx in apolloClient ? [\#82](https://github.com/adamsoffer/next-apollo/issues/82)
+
+**Merged pull requests:**
+
+- Fix page props type inference [\#84](https://github.com/adamsoffer/next-apollo/pull/84) ([bubba](https://github.com/bubba))
+
+## [v5.0.2](https://github.com/adamsoffer/next-apollo/tree/v5.0.2) (2020-10-30)
+
+[Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v5.0.1...v5.0.2)
+
+**Merged pull requests:**
+
+- Optionally pass context to client [\#83](https://github.com/adamsoffer/next-apollo/pull/83) ([bubba](https://github.com/bubba))
+
 ## [v5.0.1](https://github.com/adamsoffer/next-apollo/tree/v5.0.1) (2020-10-24)
 
 [Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v5.0.0...v5.0.1)
@@ -58,6 +78,10 @@
 
 [Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v3.1.9...v3.1.10)
 
+**Merged pull requests:**
+
+- Adds babel/runtime to the dependencies [\#64](https://github.com/adamsoffer/next-apollo/pull/64) ([arcanis](https://github.com/arcanis))
+
 ## [v3.1.9](https://github.com/adamsoffer/next-apollo/tree/v3.1.9) (2019-11-07)
 
 [Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v3.1.6...v3.1.9)
@@ -94,7 +118,6 @@
 
 **Merged pull requests:**
 
-- Adds babel/runtime to the dependencies [\#64](https://github.com/adamsoffer/next-apollo/pull/64) ([arcanis](https://github.com/arcanis))
 - Fix next-server reference in Link [\#56](https://github.com/adamsoffer/next-apollo/pull/56) ([freeatnet](https://github.com/freeatnet))
 
 ## [v3.1.4](https://github.com/adamsoffer/next-apollo/tree/v3.1.4) (2019-09-01)
