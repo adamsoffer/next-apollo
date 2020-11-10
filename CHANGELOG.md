@@ -1,5 +1,17 @@
 # Changelog
 
+## [v5.0.4](https://github.com/adamsoffer/next-apollo/tree/v5.0.4) (2020-11-10)
+
+[Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v5.0.3...v5.0.4)
+
+**Closed issues:**
+
+- Cannot find ctx to use inside headers like I did in older versions [\#86](https://github.com/adamsoffer/next-apollo/issues/86)
+
+**Merged pull requests:**
+
+- Update dependencies to allow next@10 [\#85](https://github.com/adamsoffer/next-apollo/pull/85) ([bubba](https://github.com/bubba))
+
 ## [v5.0.3](https://github.com/adamsoffer/next-apollo/tree/v5.0.3) (2020-11-02)
 
 [Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v5.0.2...v5.0.3)
