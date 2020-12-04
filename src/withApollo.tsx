@@ -127,13 +127,6 @@ export default function withApollo<P, IP>(ac: ApolloClientParam) {
       );
     };
 
-    // Set the correct displayName in development
-    if (process.env.NODE_ENV !== "production") {
-      const displayName =
-        PageComponent.displayName || PageComponent.name || "Component";
-      WithApollo.displayName = `withApollo(${displayName})`;
-    }
-
     if (ssr || PageComponent.getInitialProps) {
       WithApollo.getInitialProps = async (ctx: ContextWithApolloOptions) => {
         const inAppContext = Boolean(ctx.ctx);
