@@ -19,12 +19,12 @@ Create an Apollo Client, pass it into to the `withApollo` higher-order component
 import { withApollo } from "next-apollo";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
-const apolloClient = new ApolloClient({
+const client = new ApolloClient({
   uri: "https://api.graph.cool/simple/v1/cixmkt2ul01q00122mksg82pn",
   cache: new InMemoryCache(),
 });
 
-export default withApollo(apolloClient);
+export default withApollo(client);
 ```
 
 Inside your Next.js page, wrap your component with your exported higher order component.
