@@ -33,7 +33,9 @@ const baseFakeRouter = {
     emit: notImplemented
   },
   isFallback: false,
-  isReady: false
+  isReady: false,
+  isLocaleDomain: false,
+  isPreview: false
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
