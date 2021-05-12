@@ -1,3 +1,4 @@
 import withApollo from "./withApollo";
+import getStaticApolloProps from './getStaticApolloProps';
 
-export { withApollo };
+export { withApollo, getStaticApolloProps };

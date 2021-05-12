@@ -37,7 +37,7 @@ const baseFakeRouter = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const getStaticApolloProps = (apolloClient: ApolloClient<any>) => <
+const getStaticApolloProps = (apolloClient: ApolloClient<any>) => <
   TParams extends ParsedUrlQuery = ParsedUrlQuery
 >(
   Page: React.ComponentType<{}>,
@@ -79,3 +79,5 @@ export const getStaticApolloProps = (apolloClient: ApolloClient<any>) => <
     }
   }
 }
+
+export default getStaticApolloProps;
