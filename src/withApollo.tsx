@@ -15,6 +15,7 @@ let globalApolloClient: ApolloClient<NormalizedCacheObject> | null = null;
 type WithApolloOptions = {
   apolloClient: ApolloClient<NormalizedCacheObject>;
   apolloState: NormalizedCacheObject;
+  clearCacheOnPageEntry?: boolean;
 };
 
 type ContextWithApolloOptions = AppContext & {
@@ -52,7 +53,7 @@ export const initOnContext = (
   // Initialize ApolloClient if not already done
   const apolloClient =
     ctx.apolloClient ||
-    initApolloClient(ac, ctx.apolloState || {}, inAppContext ? ctx.ctx : ctx);
+    initApolloClient(ac, ctx.apolloState || {}, inAppContext ? ctx.ctx : ctx, false);
 
   // We send the Apollo Client as a prop to the component to avoid calling initApollo() twice in the server.
   // Otherwise, the component would have to call initApollo() again but this
@@ -82,7 +83,8 @@ export const initOnContext = (
 const initApolloClient = (
   acp: ApolloClientParam,
   initialState: NormalizedCacheObject,
-  ctx: NextPageContext | undefined
+  ctx: NextPageContext | undefined,
+  clearCache: boolean,
 ) => {
   const apolloClient = typeof acp === 'function' ? acp(ctx) : acp as ApolloClient<NormalizedCacheObject>; 
   
@@ -91,6 +93,8 @@ const initApolloClient = (
   if (typeof window === "undefined") {
     return createApolloClient(apolloClient, initialState, ctx);
   }
+
+  if (clearCache) globalApolloClient = null;
 
   // Reuse client on the client-side
   if (!globalApolloClient) {
@@ -117,7 +121,7 @@ export default function withApollo<P, IP>(ac: ApolloClientParam) {
         client = pageProps.apolloClient;
       } else {
         // Happens on: next.js csr
-        client = initApolloClient(ac, pageProps.apolloState, undefined);
+        client = initApolloClient(ac, pageProps.apolloState, undefined, !!pageProps.clearCacheOnPageEntry);
       }
 
       return (

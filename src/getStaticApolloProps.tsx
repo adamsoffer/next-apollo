@@ -75,7 +75,8 @@ const getStaticApolloProps = (apolloClient: ApolloClient<any>) => <
       props: {
         apolloState: apolloClient.cache.extract(),
         generatedAt: new Date().toISOString(),
-        revalidate: revalidate || null
+        revalidate: revalidate || null,
+        clearCacheOnPageEntry: true
       },
       revalidate
     }
