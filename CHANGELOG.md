@@ -1,16 +1,12 @@
 # Changelog
 
-## [Unreleased](https://github.com/adamsoffer/next-apollo/tree/HEAD)
+## [Released](https://github.com/adamsoffer/next-apollo/tree/v5.0.5)
 
 [Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v5.0.4...HEAD)
 
 **Closed issues:**
 
-- Question: Is it possible to forward cookies to the graphql server? [\#99](https://github.com/adamsoffer/next-apollo/issues/99)
-- Could not find "client" in the context or passed in as an option [\#96](https://github.com/adamsoffer/next-apollo/issues/96)
-- How to Implement Token Refresh? \(cookies\) [\#89](https://github.com/adamsoffer/next-apollo/issues/89)
-- Error while running `getDataFromTree` TypeError: Object\(...\) is not a function [\#88](https://github.com/adamsoffer/next-apollo/issues/88)
-- Fetching data on client side after routing [\#87](https://github.com/adamsoffer/next-apollo/issues/87)
+- Breaking Change with Nextjs 11 [\#101](https://github.com/adamsoffer/next-apollo/issues/101)
 
 **Merged pull requests:**
 
