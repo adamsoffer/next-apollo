@@ -1,5 +1,21 @@
 # Changelog
 
+## [Unreleased](https://github.com/adamsoffer/next-apollo/tree/HEAD)
+
+[Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v5.0.4...HEAD)
+
+**Closed issues:**
+
+- Question: Is it possible to forward cookies to the graphql server? [\#99](https://github.com/adamsoffer/next-apollo/issues/99)
+- Could not find "client" in the context or passed in as an option [\#96](https://github.com/adamsoffer/next-apollo/issues/96)
+- How to Implement Token Refresh? \(cookies\) [\#89](https://github.com/adamsoffer/next-apollo/issues/89)
+- Error while running `getDataFromTree` TypeError: Object\(...\) is not a function [\#88](https://github.com/adamsoffer/next-apollo/issues/88)
+- Fetching data on client side after routing [\#87](https://github.com/adamsoffer/next-apollo/issues/87)
+
+**Merged pull requests:**
+
+- Update withApollo.tsx - This update removes the breaking changes of React 11. [\#102](https://github.com/adamsoffer/next-apollo/pull/102) ([Lwachira](https://github.com/Lwachira))
+
 ## [v5.0.4](https://github.com/adamsoffer/next-apollo/tree/v5.0.4) (2020-11-10)
 
 [Full Changelog](https://github.com/adamsoffer/next-apollo/compare/v5.0.3...v5.0.4)
@@ -43,7 +59,7 @@
 
 **Merged pull requests:**
 
-- TypeScript support \(\#71\) [\#81](https://github.com/adamsoffer/next-apollo/pull/81) ([impulse](https://github.com/impulse))
+- TypeScript support \(\#71\) [\#81](https://github.com/adamsoffer/next-apollo/pull/81) ([ecklf](https://github.com/ecklf))
 - Bump elliptic from 6.5.2 to 6.5.3 [\#76](https://github.com/adamsoffer/next-apollo/pull/76) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v5.0.0](https://github.com/adamsoffer/next-apollo/tree/v5.0.0) (2020-08-05)
@@ -93,6 +109,8 @@
 **Merged pull requests:**
 
 - Adds babel/runtime to the dependencies [\#64](https://github.com/adamsoffer/next-apollo/pull/64) ([arcanis](https://github.com/arcanis))
+- Expose apolloClient in pageContext [\#62](https://github.com/adamsoffer/next-apollo/pull/62) ([guibernardino](https://github.com/guibernardino))
+- ensures getInitialProps of wrapped component can be run [\#61](https://github.com/adamsoffer/next-apollo/pull/61) ([gregorskii](https://github.com/gregorskii))
 
 ## [v3.1.9](https://github.com/adamsoffer/next-apollo/tree/v3.1.9) (2019-11-07)
 
@@ -101,10 +119,6 @@
 **Closed issues:**
 
 - How to make getInitialProps\(\) work on Pages [\#24](https://github.com/adamsoffer/next-apollo/issues/24)
-
-**Merged pull requests:**
-
-- Expose apolloClient in pageContext [\#62](https://github.com/adamsoffer/next-apollo/pull/62) ([guibernardino](https://github.com/guibernardino))
 
 ## [v3.1.6](https://github.com/adamsoffer/next-apollo/tree/v3.1.6) (2019-10-30)
 
@@ -115,10 +129,6 @@
 - question: server rendering for seo [\#59](https://github.com/adamsoffer/next-apollo/issues/59)
 - Data prefetch when changing pages [\#54](https://github.com/adamsoffer/next-apollo/issues/54)
 - useSubscription hook not working properly [\#43](https://github.com/adamsoffer/next-apollo/issues/43)
-
-**Merged pull requests:**
-
-- ensures getInitialProps of wrapped component can be run [\#61](https://github.com/adamsoffer/next-apollo/pull/61) ([gregorskii](https://github.com/gregorskii))
 
 ## [v3.1.5](https://github.com/adamsoffer/next-apollo/tree/v3.1.5) (2019-09-22)
 
