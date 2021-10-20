@@ -1,11 +1,11 @@
 import {
   ApolloClient,
   ApolloProvider,
-  NormalizedCacheObject
-} from "@apollo/client";
-import { NextPage, NextPageContext } from "next";
-import App, { AppContext } from "next/app";
-import React from "react";
+  NormalizedCacheObject,
+} from '@apollo/client';
+import { NextPage, NextPageContext } from 'next';
+import App, { AppContext } from 'next/app';
+import React, { ReactElement, ReactNode } from 'react';
 
 // On the client, we store the Apollo Client in the following variable.
 // This prevents the client from reinitializing between page transitions.
@@ -17,12 +17,13 @@ type WithApolloOptions = {
 };
 
 type ContextWithApolloOptions = AppContext & {
-  ctx: { apolloClient: WithApolloOptions["apolloClient"] };
+  ctx: { apolloClient: WithApolloOptions['apolloClient'] };
 } & NextPageContext &
   WithApolloOptions;
 
-type ApolloClientParam = ApolloClient<NormalizedCacheObject>
-  | ((ctx?: NextPageContext) => ApolloClient<NormalizedCacheObject>)
+type ApolloClientParam =
+  | ApolloClient<NormalizedCacheObject>
+  | ((ctx?: NextPageContext) => ApolloClient<NormalizedCacheObject>);
 
 /**
  * Installs the Apollo Client on NextPageContext
@@ -34,16 +35,19 @@ export const initOnContext = (
   acp: ApolloClientParam,
   ctx: ContextWithApolloOptions
 ) => {
-  const ac = typeof acp === 'function' ? acp(ctx) : acp as ApolloClient<NormalizedCacheObject>;
+  const ac =
+    typeof acp === 'function'
+      ? acp(ctx)
+      : (acp as ApolloClient<NormalizedCacheObject>);
   const inAppContext = Boolean(ctx.ctx);
 
   // We consider installing `withApollo({ ssr: true })` on global App level
   // as antipattern since it disables project wide Automatic Static Optimization.
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV === 'development') {
     if (inAppContext) {
       console.warn(
-        "Warning: You have opted-out of Automatic Static Optimization due to `withApollo` in `pages/_app`.\n" +
-        "Read more: https://err.sh/next.js/opt-out-auto-static-optimization\n"
+        'Warning: You have opted-out of Automatic Static Optimization due to `withApollo` in `pages/_app`.\n' +
+          'Read more: https://err.sh/next.js/opt-out-auto-static-optimization\n'
       );
     }
   }
@@ -83,11 +87,14 @@ const initApolloClient = (
   initialState: NormalizedCacheObject,
   ctx: NextPageContext | undefined
 ) => {
-  const apolloClient = typeof acp === 'function' ? acp(ctx) : acp as ApolloClient<NormalizedCacheObject>;
+  const apolloClient =
+    typeof acp === 'function'
+      ? acp(ctx)
+      : (acp as ApolloClient<NormalizedCacheObject>);
 
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
-  if (typeof window === "undefined") {
+  if (typeof window === 'undefined') {
     return createApolloClient(apolloClient, initialState, ctx);
   }
 
@@ -108,7 +115,11 @@ const initApolloClient = (
  * @returns {(PageComponent: NextPage<P>) => ComponentClass<P> | FunctionComponent<P>}
  */
 export default function withApollo<P, IP>(ac: ApolloClientParam) {
-  return ({ ssr = false } = {}) => (PageComponent: NextPage<P, IP>) => {
+  return ({ ssr = false } = {}) => (
+    PageComponent: NextPage<P, IP> & {
+      layout?: (page: ReactElement) => ReactNode;
+    }
+  ) => {
     const WithApollo = (pageProps: P & WithApolloOptions) => {
       let client: ApolloClient<NormalizedCacheObject>;
       if (pageProps.apolloClient) {
@@ -119,17 +130,18 @@ export default function withApollo<P, IP>(ac: ApolloClientParam) {
         client = initApolloClient(ac, pageProps.apolloState, undefined);
       }
 
+      const getLayout = PageComponent.layout ?? ((page) => page);
       return (
         <ApolloProvider client={client}>
-          <PageComponent {...pageProps} />
+          {getLayout(<PageComponent {...pageProps} />)}
         </ApolloProvider>
       );
     };
 
     // Set the correct displayName in development
-    if (process.env.NODE_ENV !== "production") {
+    if (process.env.NODE_ENV !== 'production') {
       const displayName =
-        PageComponent.displayName || PageComponent.name || "Component";
+        PageComponent.displayName || PageComponent.name || 'Component';
       WithApollo.displayName = `withApollo(${displayName})`;
     }
 
@@ -147,7 +159,7 @@ export default function withApollo<P, IP>(ac: ApolloClientParam) {
         }
 
         // Only on the server:
-        if (typeof window === "undefined") {
+        if (typeof window === 'undefined') {
           const { AppTree } = ctx;
           // When redirecting, the response is finished.
           // No point in continuing to render
@@ -161,7 +173,7 @@ export default function withApollo<P, IP>(ac: ApolloClientParam) {
               // Import `@apollo/react-ssr` dynamically.
               // We don't want to have this in our client bundle.
               const { getDataFromTree } = await import(
-                "@apollo/client/react/ssr"
+                '@apollo/client/react/ssr'
               );
 
               // Since AppComponents and PageComponents have different context types
@@ -187,7 +199,7 @@ export default function withApollo<P, IP>(ac: ApolloClientParam) {
               // Prevent Apollo Client GraphQL errors from crashing SSR.
               // Handle them in components via the data.error prop:
               // https://www.apollographql.com/docs/react/api/react-apollo.html#graphql-query-data-error
-              console.error("Error while running `getDataFromTree`", error);
+              console.error('Error while running `getDataFromTree`', error);
             }
 
             // getDataFromTree does not call componentWillUnmount
@@ -208,14 +220,17 @@ export default function withApollo<P, IP>(ac: ApolloClientParam) {
 
     return WithApollo;
   };
-};
+}
 
 const createApolloClient = (
   acp: ApolloClientParam,
   initialState: NormalizedCacheObject,
   ctx: NextPageContext | undefined
 ) => {
-  const apolloClient = typeof acp === 'function' ? acp(ctx) : acp as ApolloClient<NormalizedCacheObject>;
+  const apolloClient =
+    typeof acp === 'function'
+      ? acp(ctx)
+      : (acp as ApolloClient<NormalizedCacheObject>);
   // The `ctx` (NextPageContext) will only be present on the server.
   // use it to extract auth headers (ctx.req) or similar.
   (apolloClient as ApolloClient<NormalizedCacheObject> & {
