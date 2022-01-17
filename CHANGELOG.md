@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.0.8](https://github.com/adamsoffer/next-apollo/tree/5.0.8) (2022-01-17)
+
+[Full Changelog](https://github.com/adamsoffer/next-apollo/compare/5.0.7...5.0.8)
+
+**Closed issues:**
+
+- Outdated next.js peer dependency [\#106](https://github.com/adamsoffer/next-apollo/issues/106)
+
+**Merged pull requests:**
+
+- Update dependencies + peerDependencies to allow for next 11 [\#110](https://github.com/adamsoffer/next-apollo/pull/110) ([TheCleric](https://github.com/TheCleric))
+
 ## [5.0.7](https://github.com/adamsoffer/next-apollo/tree/5.0.7) (2021-09-22)
 
 [Full Changelog](https://github.com/adamsoffer/next-apollo/compare/5.0.6...5.0.7)
