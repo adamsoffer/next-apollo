@@ -40,6 +40,24 @@ export default withApollo({ ssr: true })(Page);
 
 That's it!
 
+## Advanced
+### SSG (getStaticProps):
+If you want to pre-generate your page, then do the following:
+
+```
+export default withApollo({ ssr: false })(YourPage)
+export const getStaticProps = getStaticApolloProps<Props, Params>(YourPage)
+```
+
+### ISR (getStaticProps + revalidate):
+If you want to pre-generate your page, but keep updating it every N seconds, then do the following:
+
+```
+export default withApollo({ ssr: false })(YourPage)
+
+// Update every 60 seconds
+export const getStaticProps = getStaticApolloProps<Props, Params>(YourPage, { revalidate: 60 })
+
 ## How Does It Work?
 
 Next-apollo integrates Apollo seamlessly with Next by wrapping our pages inside a higher-order component (HOC). Using a HOC pattern we're able to pass down a central store of query result data created by Apollo into our React component hierarchy defined inside each page of our Next application.
